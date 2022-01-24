@@ -1,1 +1,236 @@
-﻿
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
+/* ________________________________________________________ */
+/*                     Navigation Bar                       */
+/* ________________________________________________________ */
+
+@font-face {
+    font-family: 'Pragmatica ExtraLight Reg';
+    src: url('/fonts/Pragmatica-ExtraLight.woff') format('woff');
+}
+
+body {
+    font-family: 'Pragmatica ExtraLight Reg', 'Open Sans', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    position: relative;
+    text-rendering: optimizeLegibility;
+}
+
+
+header {
+    position: absolute;
+    top: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    min-height: 51.8px;
+    width: 100%;
+    background-color: #2a2a2a;
+    font-size: .70em;
+}
+
+.logo {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 30px auto;
+    min-height: 51.8px;
+    min-width: 51.8px;
+    width: 3.7em;
+    height: 3.7em;
+    text-decoration: none;
+    justify-self: flex-start;
+    margin-left: .5em;
+    margin-right: .5em;
+    opacity: 90%;
+    transition: opacity .2s ease-in-out;
+}
+
+.logo > img{
+    height:100%;
+    padding:8px;
+}
+
+    .logo:hover {
+        opacity: 1;
+    }
+
+.left-nav {
+    margin-right: auto;
+    min-height: 100%;
+}
+
+.right-nav {
+    margin-left: auto;
+    min-height: 100%;
+}
+
+.navbar {
+    list-style: none;
+    display: flex;
+    min-height: 100%;
+    font-size: 1em;
+}
+
+.navElem {
+    display: inline-block;
+    min-height: 100%;
+}
+
+.divide_line {
+    width: 40px;
+    min-height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    .divide_line::after {
+        content: "";
+        height: 70%;
+        width: 1px;
+        background-color: #ccc;
+    }
+
+.nav {
+    cursor: pointer;
+    text-decoration: none !important;
+    text-align: center;
+    text-indent: 5px;
+    letter-spacing: .5px;
+    min-height: 100%;
+    width: 100%;
+    padding: 0 10.5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ccc;
+    text-transform: uppercase;
+    transition: color .2s ease-in-out;
+    position: relative;
+}
+
+    .nav > a {
+        text-decoration: inherit;
+        color: inherit;
+        text-align: center;
+        text-indent: 5px;
+        letter-spacing: .5px;
+    }
+
+.nav-highlight {
+}
+
+    .nav-highlight:hover {
+        color: white;
+    }
+
+.nav-lng-highlight {
+}
+
+    .nav-lng-highlight:hover {
+        color: rgb(233, 233, 233);
+    }
+
+.navlink {
+    transition: color .2s ease-in-out;
+    position: relative;
+}
+
+    .navlink::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        height: 0;
+        width: 100%;
+        transition: background-color .1s ease-in-out;
+        transition: height .2s ease-in-out;
+    }
+
+    .navlink:hover::before {
+        height: 6px;
+        background-color: #0078f2;
+    }
+
+.nav-active.navlink::before {
+    height: 6px;
+    background-color: #0078f2;
+}
+
+.dropdownlist {
+    list-style: none;
+    position: absolute;
+    top: 50.8px;
+    min-width: 160px;
+    width: auto;
+    opacity: 0;
+    visibility: hidden;
+    overflow: hidden;
+    transform: translateY(-10px);
+    transition: all .1s ease-in-out;
+    text-align: center;
+}
+
+.left {
+    text-align: left;
+    left: 0;
+}
+
+
+.right {
+    text-align: right;
+    right: 0;
+}
+
+.text-higlight {
+}
+
+    .text-higlight:hover {
+        color: white;
+    }
+
+
+.dropItem {
+    text-decoration: none;
+    background-color: #2a2a2a;
+    line-height: 3.5em;
+    color: #ccc;
+    padding: 0 15px;
+    font-size: 1em;
+}
+
+    .dropItem > a {
+        text-decoration: inherit;
+        color: inherit;
+    }
+
+
+    .dropItem:hover {
+        color: white;
+    }
+
+.dropdown{}
+
+.dropdown:hover .dropdownlist {
+    opacity: 1;
+    display: block;
+    visibility: visible;
+    transform: translateY(0px);
+}
+
+.btn-download {
+    color: white;
+    background-color: #0078f2;
+}
+
+
+/* ________________________________________________________ */
+/*                     Navigation Bar                       */
+/* ________________________________________________________ */
+
