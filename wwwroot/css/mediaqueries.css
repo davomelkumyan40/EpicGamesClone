@@ -1,0 +1,21 @@
+﻿@media only screen and (max-width: 1300px){
+    .left-nav {
+        display: none;
+    }
+
+    .nav-btn-wrap {
+        width: 52px;
+        height: 60px;
+        background-color: red;
+        display: block;
+        cursor: pointer;
+    }
+}
+
+@media only screen and (max-width: 959px){
+    //same right btn
+}
+
+@media only screen and (max-width: 599px){
+    //little right btn
+}

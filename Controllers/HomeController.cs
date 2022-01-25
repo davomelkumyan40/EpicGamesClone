@@ -5,15 +5,21 @@ namespace EpicGames.Controllers
 {
     public class HomeController : Controller
     {
-        public HomeController()
-        {
-                
-        }
-
         public IActionResult Index()
         {
             ViewData["title"] = "Home";
             return View();
+        }
+
+        public IActionResult UnrealEngine()
+        {
+            ViewData["title"] = "Unreal Engine";
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult Download()
+        {
+            return RedirectToAction("Index");
         }
     }
 }

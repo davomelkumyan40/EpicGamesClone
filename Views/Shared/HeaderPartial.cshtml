@@ -1,0 +1,106 @@
+﻿<div class="logo-wrapper">
+    <a asp-controller="Home" asp-action="Index" class="logo" title="Epic Games">
+        <img src="./assets/epic.png" />
+    </a>
+</div>
+<div class="nav-btn-wrap"></div>
+<nav class="left-nav">
+    <ul class="navbar">
+        <li class="navElem">
+            <a asp-controller="Store" asp-action="Index" class="nav navlink nav-highlight">
+                <span>Магазин</span>
+            </a>
+        </li>
+        <li class="navElem">
+            <a asp-controller="News" asp-action="Index" class="nav navlink nav-highlight">
+                <span>Новости</span>
+            </a>
+        </li>
+        <li class="navElem">
+            <a asp-controller="Help" asp-action="OftenQuestions" class="nav navlink nav-highlight">
+                <span>Часто задаваемые вопросы</span>
+            </a>
+        </li>
+        <li class="navElem">
+            <a asp-controller="Help" asp-action="Index" class="nav navlink nav-highlight">
+                <span>Справка</span>
+            </a>
+        </li>
+        <li class="navElem">
+            <a asp-controller="Home" asp-action="UnrealEngine" class="nav navlink nav-highlight">
+                <span>Unreal Engine</span>
+            </a>
+        </li>
+
+        <li class="navElem divide_line"></li>
+
+        <li class="navElem">
+            <div class="nav dropdown nav-highlight">
+                <span>ОБ Epic Games</span>
+                <ul class="dropdownlist left">
+                    <li class="dropItem">
+                        <a asp-controller="About" asp-action="Company">
+                            <span>Компания</span>
+                        </a>
+                    </li>
+                    <li class="dropItem">
+                        <a asp-controller="About" asp-action="NewsRoom">
+                            <span>Epic Newsroom</span>
+                        </a>
+                    </li>
+                    <li class="dropItem">
+                        <a asp-controller="About" asp-action="Job">
+                            <span>Вакансии</span>
+                        </a>
+                    </li>
+                    <li class="dropItem">
+                        <a asp-controller="About" asp-action="Students">
+                            <span>Студенты</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</nav>
+<nav class="right-nav">
+    <ul class="navbar">
+        <li class="navElem">
+            <div class="nav dropdown nav-lng-highlight">
+                <span>
+                    <span class="material-icons">language</span>
+                </span>
+                <ul id="lng" class="dropdownlist">
+                    <li class="dropItem"><a href="#"><span>العربية</span></a></li>
+                    <li class="dropItem"><a href="#"><span>Deutsch</span></a></li>
+                    <li class="dropItem"><a href="#"><span>English</span></a></li>
+                    <li class="dropItem"><a href="#"><span>Español (Spain)</span></a></li>
+                    <li class="dropItem"><a href="#"><span>Español (LA)</span></a></li>
+                    <li class="dropItem"><a href="#"><span>Français</span></a></li>
+                    <li class="dropItem"><a href="#"><span>Italian</span></a></li>
+                    <li class="dropItem"><a href="#"><span>日本語</span></a></li>
+                    <li class="dropItem"><a href="#"><span>한국어</span></a></li>
+                    <li class="dropItem"><a href="#"><span>Polski</span></a></li>
+                    <li class="dropItem"><a href="#"><span>Português (Brasil)</span></a></li>
+                    <li class="dropItem"><a href="#"><span>ไทย</span></a></li>
+                    <li class="dropItem"><a href="#"><span>Türkçe</span></a></li>
+                    <li class="dropItem"><a href="#"><span>简体中文</span></a></li>
+                    <li class="dropItem"><a href="#"><span>繁體中文</span></a></li>
+                </ul>
+            </div>
+        </li>
+        <li class="navElem">
+            <a asp-controller="Auth" asp-action="Login" class="nav nav-highlight">
+                <span class="material-icons">
+                    person
+                </span>
+                <p>Вход</p>
+            </a>
+        </li>
+        <li class="navElem">
+            <a asp-controller="Home" asp-action="Download" class="nav btn-download">
+                <p>Загрузить Epic Games</p>
+            </a>
+        </li>
+    </ul>
+</nav>
