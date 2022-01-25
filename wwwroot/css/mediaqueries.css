@@ -10,9 +10,29 @@
 }
 
 @media only screen and (max-width: 959px) {
-    /*//same right btn*/
+    .right-nav{
+        display: none;
+    }
+
+    header{
+        justify-content: space-between;
+    }
+
+    .nav-btn-wrap {
+        background-color: rgb(0, 120, 242);
+    }
+
+        .nav-btn-wrap > #x, .nav-btn-wrap > #x::before, .nav-btn-wrap > #x::after{
+            background-color: rgb(233, 233, 233);
+        }
 }
 
 @media only screen and (max-width: 599px) {
-    /*//little right btn*/
+    .nav-btn-wrap > #x, .nav-btn-wrap > #x::before, .nav-btn-wrap > #x::after {
+        width: 24px;
+    }
+
+    .nav-btn-wrap{
+        width: 44px;
+    }
 }
