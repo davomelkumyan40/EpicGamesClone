@@ -1,21 +1,18 @@
-﻿@media only screen and (max-width: 1300px){
+﻿@media only screen and (max-width: 1299px) {
     .left-nav {
         display: none;
     }
 
     .nav-btn-wrap {
-        width: 52px;
-        height: 60px;
-        background-color: red;
-        display: block;
-        cursor: pointer;
+        display: inherit;
     }
+
 }
 
-@media only screen and (max-width: 959px){
-    //same right btn
+@media only screen and (max-width: 959px) {
+    /*//same right btn*/
 }
 
-@media only screen and (max-width: 599px){
-    //little right btn
+@media only screen and (max-width: 599px) {
+    /*//little right btn*/
 }

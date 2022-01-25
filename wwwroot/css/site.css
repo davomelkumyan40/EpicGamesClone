@@ -68,9 +68,73 @@ header {
         opacity: 1;
     }
 
-.nav-btn-wrap{
+
+
+/*------------- Nav Btn X ----------------*/
+
+#xs {
     display: none;
 }
+
+.nav-btn-wrap {
+    width: 52px;
+    height: 60px;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+    .nav-btn-wrap > #x {
+        background-color: #ccc;
+        height: 3px;
+        width: 30px;
+        position: relative;
+        transition: .2s ease all;
+    }
+
+        .nav-btn-wrap > #x::after {
+            content: "";
+            background-color: #ccc;
+            position: absolute;
+            height: 3px;
+            width: 30px;
+            top: -8px;
+            transition: .2s ease all;
+        }
+
+        .nav-btn-wrap > #x::before {
+            content: "";
+            background-color: #ccc;
+            position: absolute;
+            height: 3px;
+            width: 30px;
+            top: 8px;
+            transition: .2s ease all;
+        }
+
+#xs:checked + label > #x {
+    transform: rotateZ(45deg);
+    background-color: rgb(233, 233, 233);
+}
+
+    #xs:checked + label > #x::before {
+        opacity: 0;
+    }
+
+    #xs:checked + label > #x::after {
+        transform: translateY(0.5em) rotateZ(-90deg);
+        background-color: rgb(233, 233, 233);
+    }
+
+
+.nav-btn-wrap {
+    display: none;
+}
+
+/*----------------------------------------*/
 
 .left-nav {
     margin-right: auto;
