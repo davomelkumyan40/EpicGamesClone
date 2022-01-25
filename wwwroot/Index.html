@@ -15,9 +15,11 @@
 
 <body>
     <header>
-        <a asp-action="Index" class="logo" title="Epic Games">
-            <img src="./assets/epic.png" />
-        </a>
+        <div class="logo-wrapper">
+            <a asp-action="Index" class="logo" title="Epic Games">
+                <img src="./assets/epic.png" />
+            </a>
+        </div>
         <nav class="left-nav">
             <ul class="navbar">
                 <li class="navElem">
@@ -105,8 +107,10 @@
                 </li>
                 <li class="navElem">
                     <a asp-controller="Auth" asp-action="Login" class="nav nav-highlight">
-                        <img src="./assets/unauthorized.png" />
-                        <p>Войти</p>
+                        <span class="material-icons">
+                            person
+                        </span>
+                        <p>Вход</p>
                     </a>
                 </li>
                 <li class="navElem">

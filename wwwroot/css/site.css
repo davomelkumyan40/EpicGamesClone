@@ -4,23 +4,28 @@
     box-sizing: border-box;
 }
 
-
+body {
+    position: relative;
+    text-rendering: optimizeLegibility;
+    font-size: 16px;
+    background-color: #ccc;
+    color: black;
+}
 
 /* ________________________________________________________ */
 /*                     Navigation Bar                       */
 /* ________________________________________________________ */
 
 @font-face {
-    font-family: 'Pragmatica ExtraLight Reg';
-    src: url('/fonts/Pragmatica-ExtraLight.woff') format('woff');
+    font-family: 'Helvetica';
+    src: url('/fonts/Helvetica/Helvetica.ttf') format('ttf');
 }
 
-body {
-    font-family: 'Pragmatica ExtraLight Reg', 'Open Sans', sans-serif;
+
+nav {
+    font-family: 'Helvetica', 'Open Sans', sans-serif;
     font-style: normal;
     font-weight: 400;
-    position: relative;
-    text-rendering: optimizeLegibility;
 }
 
 
@@ -33,20 +38,22 @@ header {
     min-height: 51.8px;
     width: 100%;
     background-color: #2a2a2a;
-    font-size: .70em;
+}
+
+.logo-wrapper{
+    cursor: pointer;
+    min-height: 51.8px;
+    min-width: 70px;
+    height: 3.7em;
 }
 
 .logo {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 30px auto;
-    min-height: 51.8px;
-    min-width: 51.8px;
-    width: 3.7em;
-    height: 3.7em;
+    display: block;
+    height: 100%;
+    width: 100%;
     text-decoration: none;
     justify-self: flex-start;
-    margin-left: .5em;
+    margin-left: 0.43em;
     margin-right: .5em;
     opacity: 90%;
     transition: opacity .2s ease-in-out;
@@ -54,7 +61,7 @@ header {
 
 .logo > img{
     height:100%;
-    padding:8px;
+    padding:12px;
 }
 
     .logo:hover {
@@ -64,18 +71,19 @@ header {
 .left-nav {
     margin-right: auto;
     min-height: 100%;
+    font-size: 0.70em;
 }
 
 .right-nav {
     margin-left: auto;
     min-height: 100%;
+    font-size:  0.54em;
 }
 
 .navbar {
     list-style: none;
     display: flex;
     min-height: 100%;
-    font-size: 1em;
 }
 
 .navElem {
@@ -154,12 +162,12 @@ header {
     }
 
     .navlink:hover::before {
-        height: 6px;
+        height: 5px;
         background-color: #0078f2;
     }
 
 .nav-active.navlink::before {
-    height: 6px;
+    height: 5px;
     background-color: #0078f2;
 }
 
@@ -202,7 +210,6 @@ header {
     line-height: 3.5em;
     color: #ccc;
     padding: 0 15px;
-    font-size: 1em;
 }
 
     .dropItem > a {
