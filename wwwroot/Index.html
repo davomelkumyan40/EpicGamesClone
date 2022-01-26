@@ -5,21 +5,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/site.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="./css/site.css" asp-append-version="true">
+    <link rel="stylesheet" href="./css/mediaqueries.css" asp-append-version="true">
+
     <title>@ViewData["title"] - EpicGames Games</title>
 </head>
 
 <body>
     <header>
         <div class="logo-wrapper">
-            <a asp-action="Index" class="logo" title="Epic Games">
+            <a asp-controller="Home" asp-action="Index" class="logo" title="Epic Games">
                 <img src="./assets/epic.png" />
             </a>
         </div>
+        <input type="checkbox" id="xs" />
+        <label class="nav-btn-wrap" for="xs">
+            <span id="x"></span>
+        </label>
         <nav class="left-nav">
             <ul class="navbar">
                 <li class="navElem">
@@ -43,7 +49,7 @@
                     </a>
                 </li>
                 <li class="navElem">
-                    <a asp-action="UnrealEngine" class="nav navlink nav-highlight">
+                    <a asp-controller="Home" asp-action="UnrealEngine" class="nav navlink nav-highlight">
                         <span>Unreal Engine</span>
                     </a>
                 </li>
@@ -60,7 +66,7 @@
                                 </a>
                             </li>
                             <li class="dropItem">
-                                <a asp-controller="About" asp-action="Newsroom">
+                                <a asp-controller="About" asp-action="NewsRoom">
                                     <span>Epic Newsroom</span>
                                 </a>
                             </li>
@@ -114,7 +120,7 @@
                     </a>
                 </li>
                 <li class="navElem">
-                    <a asp-action="Download" class="nav btn-download">
+                    <a asp-controller="Home" asp-action="Download" class="nav btn-download">
                         <p>Загрузить Epic Games</p>
                     </a>
                 </li>
@@ -125,7 +131,7 @@
         @RenderBody()
     </main>
     <footer>&copy; 2022 - Epic Games</footer>
-    <!-- <script src="./js/site.js"></script> -->
+    <script src="~/js/site.js" asp-append-version="true"></script>
 </body>
 
 </html>

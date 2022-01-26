@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
 
-namespace EpicGames.Controllers
+namespace EpicGames.Controllers.Site
 {
     public class HomeController : Controller
     {
