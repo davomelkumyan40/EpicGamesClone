@@ -7,6 +7,10 @@
         display: inherit;
     }
 
+    .slide-content{
+        width: calc(100% / 2 - 10%);
+    }
+
 }
 
 @media only screen and (max-width: 959px) {
@@ -25,6 +29,10 @@
         .nav-btn-wrap > #x, .nav-btn-wrap > #x::before, .nav-btn-wrap > #x::after{
             background-color: rgb(233, 233, 233);
         }
+
+    .slide-content{
+        width: calc(100% - 10%);
+    }
 }
 
 @media only screen and (max-width: 599px) {
