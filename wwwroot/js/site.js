@@ -41,16 +41,10 @@
             this.images = [];
             this.slides = [];
             this.paths = [];
+            this.next = false;
             this.multiplayer = 1;
-            if (this.slideWidth < 960) {
-                this.multiplayer = 1;
-            }
-            else if (this.slideWidth < 1300) {
-                this.multiplayer = 2;
-            }
-            else {
-                this.multiplayer = 3;
-            }
+            this.multiplayer = this.slideWidth < 960 ? 1 : this.slideWidth < 1300 ? 2 : 3;
+            this.currentPos = this.slideWidth / this.multiplayer;
             this.wrapper.style.width = `${this.slideWidth / this.multiplayer * count}px`;
             for (let i = 0; i < count; i++) {
                 let img = `${path}/${i + 1}.${format}`;
@@ -68,13 +62,33 @@
                 this.slides.push(slide);
                 let content = document.createElement("div");
                 content.classList.add("slide-content");
-                content.innerHTML = `<h1>Some Header ${i}</h1>`; //TODO
+                content.innerHTML = `<h1>Some Header ${i}</h1>`; //TODO finish
                 slide.appendChild(content);
                 this.wrapper.appendChild(slide);
             }
 
+            const nextHandler = () => {
+                this.next = true;
+                this.wrapper.style.transform = `translateX(-${this.currentPos}px)`;
+            };
+            const prevHandler = () => {
+                this.next = false;
+                this.wrapper.style.transform = `translateX(${this.currentPos}px)`;
+            };
+
+            const addBtnsHandler = () => {
+                this.btnNext.addEventListener("click", nextHandler);
+                this.btnPrev.addEventListener("click", prevHandler);
+            }
+
+            const removeBtnsHandler = () => {
+                this.btnNext.removeEventListener("click", nextHandler);
+                this.btnPrev.removeEventListener("click", prevHandler);
+            }
+
+            addBtnsHandler();
+
             window.addEventListener("resize", (e) => {
-                this.wrapper.classList.add("no-transition");
                 this.slideHeight = e.target.innerHeight;
                 this.slideWidth = e.target.innerWidth;
                 this.currentPos = this.slideWidth / this.multiplayer;
@@ -85,13 +99,14 @@
                     this.multiplayer = 2;
                 else
                     this.multiplayer = 3;
+                this.wrapper.classList.add("no-transition");
                 this.wrapper.style.width = `${this.slideWidth / this.multiplayer * count}px`;
-
+                this.wrapper.classList.remove("no-transition");
+                this.wrapper.offsetHeight;
                 this.slides.forEach((v, i) => {
                     v.style.width = `${this.slideWidth / this.multiplayer}px`;
                 });
-                this.wrapper.classList.remove("no-transition");
-                this.wrapper.offsetHeight;
+
             });
 
             this.slides.forEach((v, i) => {
@@ -108,72 +123,34 @@
                     });
                 });
             });
-            this.currentPos = this.slideWidth / this.multiplayer;
-            this.next = false;
 
-            this.btnNext.addEventListener("click", () => {
-                this.next = true;
-                this.wrapper.style.transform = `translateX(-${this.currentPos}px)`;
-            });
 
-            this.btnPrev.addEventListener("click", () => {
-                this.next = false;
-                this.wrapper.style.transform = `translateX(${this.currentPos}px)`;
-            });
 
-            this.current = 1; //TODO test
-            this.clicked = 0;
             this.wrapper.addEventListener("transitionend", () => {
-                console.log("again");
+                removeBtnsHandler();
                 this.wrapper.classList.add("no-transition");
                 this.wrapper.style.transform = `translateX(0px)`;
                 this.wrapper.offsetHeight;
                 this.wrapper.classList.remove("no-transition");
-
-                this.clicked++;
-                if (this.clicked > count - 1)
-                    this.clicked = 0;
-                //TODO finish
+                let m = 0;
                 if (this.next) {
                     let i = 0;
-                    let f = this.current; //1
-                    let g = this.current + this.clicked; //2
-                    while (i < count) {
-                        i++;
-                        if (f > count - 1)
-                            f = 0;
-                        if (g > count - 1) {
-                            let t = g;
-                            g = 0;
-                            g += t - count;
-                        }
-                        this.images[f].style.backgroundImage = `url(${this.paths[g]})`;
-                        f++;
-                        g++;
+                    this.images[count - 1].style.backgroundImage = this.images[0].style.backgroundImage;
+                    while (i < count - 1) {
+                        m = i + 1;
+                        this.images[i++].style.backgroundImage = this.images[m].style.backgroundImage;
                     }
-                    this.current++;
-                    this.current = this.current > count - 1 ? 0 : this.current;
-
-                } else {
-                    let i = 0;
-                    let f = this.current; //1
-                    let g = this.current - this.clicked; //2
-                    while (i < count) {
-                        i++;
-                        if (f > count - 1)
-                            f = 0;
-                        if (g > count - 1) {
-                            let t = g;
-                            g = 0;
-                            g += t - count;
-                        }
-                        this.images[f].style.backgroundImage = `url(${this.paths[g]})`;
-                        f++;
-                        g++;
-                    }
-                    this.current--;
-                    this.current = this.current < 0 ? count - 1 : this.current;
                 }
+                else {
+                    let i = count - 1;
+                    let last = this.images[count - 1].style.backgroundImage;
+                    while (i > 0) {
+                        m = i - 1;
+                        this.images[i--].style.backgroundImage = this.images[m].style.backgroundImage;
+                    }
+                    this.images[0].style.backgroundImage = last;
+                }
+                addBtnsHandler();
             });
         }
 
