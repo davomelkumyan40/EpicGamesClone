@@ -373,7 +373,7 @@ main{
     background-color: #2a2a2a;
     float: left;
     overflow: hidden;
-    transition: 0.3s all ease;
+    /* transition: 0.3s all ease; */
 }
 
 .slide-img{

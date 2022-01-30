@@ -74,6 +74,7 @@
             }
 
             window.addEventListener("resize", (e) => {
+                this.wrapper.classList.add("no-transition");
                 this.slideHeight = e.target.innerHeight;
                 this.slideWidth = e.target.innerWidth;
                 this.currentPos = this.slideWidth / this.multiplayer;
@@ -84,13 +85,13 @@
                     this.multiplayer = 2;
                 else
                     this.multiplayer = 3;
-                this.wrapper.classList.add("no-transition");
                 this.wrapper.style.width = `${this.slideWidth / this.multiplayer * count}px`;
-                this.wrapper.classList.remove("no-transition");
-                this.wrapper.offsetHeight;
+
                 this.slides.forEach((v, i) => {
                     v.style.width = `${this.slideWidth / this.multiplayer}px`;
                 });
+                this.wrapper.classList.remove("no-transition");
+                this.wrapper.offsetHeight;
             });
 
             this.slides.forEach((v, i) => {
