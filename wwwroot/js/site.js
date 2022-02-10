@@ -18,7 +18,7 @@ import CaruselSlider from "./modules/slider.js";
 
         if (sliderElem) {
             const slider = new CaruselSlider(sliderElem, "./assets/slider", "jpg", 7);
-            //slider.runAfter(2000);
+            slider.runAfter(2000);
         }
     }
 

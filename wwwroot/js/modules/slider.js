@@ -19,16 +19,19 @@ export default class CaruselSlider {
         this.wrapper.classList.add("wrapper");
         this.container.appendChild(this.wrapper);
         let style = window.getComputedStyle(this.container);
-        this.slideHeight = parseFloat(style.height.split("px")[0]);
-        this.slideWidth = parseFloat(style.width.split("px")[0]);
+        this.sliderHeight = parseFloat(style.height.split("px")[0]);
+        this.sliderWidth = parseFloat(style.width.split("px")[0]);
         this.images = [];
         this.slides = [];
         this.paths = [];
         this.next = false;
         this.multiplayer = 1;
-        this.multiplayer = this.slideWidth < 960 ? 1 : this.slideWidth < 1300 ? 2 : 3;
-        this.currentPos = this.slideWidth / this.multiplayer;
-        this.wrapper.style.width = `${this.slideWidth / this.multiplayer * count}px`;
+        this.navigated = false;
+        this.multiplayer = this.sliderWidth < 960 ? 1 : this.sliderWidth < 1367 ? 2 : 3;
+        this.currentPos = this.sliderWidth / this.multiplayer;
+        this.wrapper.style.width = `${this.sliderWidth / this.multiplayer * count}px`;
+        this.wrapper.style.left = `-${this.sliderWidth / this.multiplayer}px`;
+
         for (let i = 0; i < count; i++) {
             let img = `${path}/${i + 1}.${format}`;
             this.paths.push(img);
@@ -40,8 +43,8 @@ export default class CaruselSlider {
             let slide = document.createElement("div");
             slide.appendChild(imgElem);
             slide.classList.add("slide");
-            slide.style.height = `${this.slideHeight}px`;
-            slide.style.width = `${this.slideWidth / this.multiplayer}px`;
+            slide.style.height = `${this.sliderHeight}px`;
+            slide.style.width = `${this.sliderWidth / this.multiplayer}px`;
             this.slides.push(slide);
             let content = document.createElement("div");
             content.classList.add("slide-content");
@@ -52,10 +55,13 @@ export default class CaruselSlider {
 
         const nextHandler = () => {
             this.next = true;
+            this.navigated = true;
             this.wrapper.style.transform = `translateX(-${this.currentPos}px)`;
+
         };
         const prevHandler = () => {
             this.next = false;
+            this.navigated = true;
             this.wrapper.style.transform = `translateX(${this.currentPos}px)`;
         };
 
@@ -69,39 +75,47 @@ export default class CaruselSlider {
             this.btnPrev.removeEventListener("click", prevHandler);
         }
 
+        const resetWrapperPosition = () => {
+            this.wrapper.classList.add("no-transition");
+            this.wrapper.style.transform = `translateX(0px)`;
+            this.wrapper.offsetHeight;
+            this.wrapper.classList.remove("no-transition");
+        }
+
         addBtnsHandler();
 
         window.addEventListener("resize", (e) => {
-            this.slideHeight = e.target.innerHeight;
-            this.slideWidth = e.target.innerWidth;
-            this.currentPos = this.slideWidth / this.multiplayer;
-
-            if (this.slideWidth < 960)
-                this.multiplayer = 1;
-            else if (this.slideWidth < 1300)
-                this.multiplayer = 2;
-            else
-                this.multiplayer = 3;
+            this.sliderHeight = e.target.innerHeight;
+            this.sliderWidth = e.target.innerWidth;
+            this.multiplayer = this.sliderWidth < 960 ? 1 : this.sliderWidth < 1367 ? 2 : 3;
+            this.currentPos = this.sliderWidth / this.multiplayer;
             this.wrapper.classList.add("no-transition");
-            this.wrapper.style.width = `${this.slideWidth / this.multiplayer * count}px`;
+            this.wrapper.style.width = `${this.sliderWidth / this.multiplayer * count}px`;
+            this.wrapper.style.left = `-${this.sliderWidth / this.multiplayer}px`;
+            console.log(this.wrapper.style.width);
+            this.wrapper.style.height = `${this.sliderHeight}px`;
             this.wrapper.classList.remove("no-transition");
             this.wrapper.offsetHeight;
             this.slides.forEach((v, i) => {
-                v.style.width = `${this.slideWidth / this.multiplayer}px`;
+                v.style.width = `${this.sliderWidth / this.multiplayer}px`;
+                v.style.height = `${this.sliderHeight}px`;
             });
 
         });
 
+        //TODO finish
         this.slides.forEach((v, i) => {
             v.addEventListener("click", (e) => {
-                this.wrapper.style.width = `${((this.slideWidth / this.multiplayer) * (count - 1)) + this.slideWidth}px`;
-                v.style.width = `${this.slideWidth}px`;
+                this.wrapper.style.width = `${((this.sliderWidth / this.multiplayer) * (count - 1)) + this.sliderWidth}px`;
+                this.slides.forEach((v1) => v1.classList.add("slide-transition"));
+                v.style.width = `${this.sliderWidth}px`;
                 let closeBtn = document.createElement("div");
                 closeBtn.classList.add("slider-close-btn");
                 this.container.appendChild(closeBtn);
                 closeBtn.addEventListener("click", () => {
-                    v.style.width = `${this.slideWidth / this.multiplayer}px`;
-                    this.wrapper.style.width = `${(this.slideWidth / this.multiplayer) * count}px`;
+                    this.slides.forEach((v1) => v1.classList.remove("slide-transition"));
+                    v.style.width = `${this.sliderWidth / this.multiplayer}px`;
+                    this.wrapper.style.width = `${(this.sliderWidth / this.multiplayer) * count}px`;
                     closeBtn.classList.remove("slider-close-btn");
                 });
             });
@@ -110,11 +124,11 @@ export default class CaruselSlider {
 
 
         this.wrapper.addEventListener("transitionend", () => {
+            if (!this.navigated)
+                return;
+            this.navigated = false;
             removeBtnsHandler();
-            this.wrapper.classList.add("no-transition");
-            this.wrapper.style.transform = `translateX(0px)`;
-            this.wrapper.offsetHeight;
-            this.wrapper.classList.remove("no-transition");
+            resetWrapperPosition();
             let m = 0;
             if (this.next) {
                 let i = 0;
@@ -137,7 +151,7 @@ export default class CaruselSlider {
 
     runAfter(ms) {
         setTimeout(() => {
-            this.wrapper.style.transform = "translateX(-100%)";
+
         }, ms);
     }
 }
