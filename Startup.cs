@@ -29,7 +29,7 @@ namespace EpicGames
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/Site/Error");
                 //app.UseHsts();
             }
 

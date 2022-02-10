@@ -2,20 +2,25 @@
 <html>
 
 <head>
-    @await Html.PartialAsync("MetaPartial")
-    @await Html.PartialAsync("CssPartial")
+    <partial name="_MetaPartial"></partial>
+    <partial name="_CssPartial"></partial>
+    @*@await Html.PartialAsync("MetaPartial")*@
+    @*@await Html.PartialAsync("CssPartial")*@
 </head>
 <body>
     <header>
-       @await Html.PartialAsync("HeaderPartial")
+        <partial name="_HeaderPartial"></partial>
+       @*@await Html.PartialAsync("HeaderPartial")*@
     </header>
     <main>
         @RenderBody()
     </main>
     <footer>
-        @await Html.PartialAsync("FooterPartial")
+        <partial name="_FooterPartial"></partial>
+        @*@await Html.PartialAsync("FooterPartial")*@
     </footer>
-    @await Html.PartialAsync("ScriptsPartial")
+    <partial name="_ScriptsPartial"></partial>
+    @*@await Html.PartialAsync("ScriptsPartial")*@
 </body>
 
 </html>
