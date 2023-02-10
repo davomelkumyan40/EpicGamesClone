@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore;
+using DataAccess.Data;
 
 namespace EpicGames
 {
@@ -18,6 +20,10 @@ namespace EpicGames
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<GamesContext>(options =>
+            {
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"));
+            });
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
         }
 

@@ -92,7 +92,6 @@ export default class CaruselSlider {
             this.wrapper.classList.add("no-transition");
             this.wrapper.style.width = `${this.sliderWidth / this.multiplayer * count}px`;
             this.wrapper.style.left = `-${this.sliderWidth / this.multiplayer}px`;
-            console.log(this.wrapper.style.width);
             this.wrapper.style.height = `${this.sliderHeight}px`;
             this.wrapper.classList.remove("no-transition");
             this.wrapper.offsetHeight;
